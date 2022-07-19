@@ -27,7 +27,7 @@ German_alternate_kaiser = {
 		GER_return_of_the_kaiser
 		GER_bulwark_against_bolshevism
 		GER_realization_of_the_wehrmacht
-		GER_selection_of_the_okw
+		GER_oberkommando_des_heeres
 		GER_the_heers_new_era
 		GER_four_year_plan
 		GER_continue_with_schachtian
@@ -147,7 +147,7 @@ German_alternate_democratic = {
 		GER_oppose_hitler
 		GER_call_upon_the_freikorp
 		GER_realization_of_the_wehrmacht
-		GER_selection_of_the_okw
+		GER_oberkommando_des_heeres
 		GER_the_heers_new_era
 		GER_revive_our_great_war_tactics
 		GER_cult_of_the_sturmtruppen

@@ -2259,8 +2259,8 @@
   GER_realization_of_the_wehrmacht:0 "Realization of the Wehrmacht"
   GER_realization_of_the_wehrmacht_desc:0 "Germany has laid dormant without a real army to speak of for decades. A strong Germany requires a strong army."
 
-  GER_selection_of_the_okw:0 "Selection of the OKW"
-  GER_selection_of_the_okw_desc:0 "The Oberkommando der Wehrmacht unifies our command branches of the army, navy, and air force. New officers must be chosen for this high command if it is to succeed."
+  GER_oberkommando_des_heeres:0 "Selection of the OKW"
+  GER_oberkommando_des_heeres_desc:0 "The Oberkommando der Wehrmacht unifies our command branches of the army, navy, and air force. New officers must be chosen for this high command if it is to succeed."
   GER_create_general_alfred_jodl_tt:0 "\nA §Y3 Skill General§! named §YAlfred Jodl§! will appear"
 
   GER_reestablish_jager_training:0 "Re-establish Jäger training"
