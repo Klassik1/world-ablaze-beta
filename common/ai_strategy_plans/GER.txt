@@ -48,7 +48,7 @@ German_historical = {
 		GER_treaty_of_mutual_assistance
 		GER_invest_in_ig_farben
 		GER_realization_of_the_wehrmacht
-		GER_oberkommando_des_heeres
+		GER_selection_of_the_okw
 		GER_the_heers_new_era
 		GER_war_of_movement
 		GER_ussr_tractor_experiments
