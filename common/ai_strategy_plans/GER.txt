@@ -111,7 +111,7 @@ German_historical = {
 		GER_alliance_with_finland
 	GER_eastern_lebensraum
 		GER_fate_of_greece	
-		GER_develop_the_fw
+		GER_air_fw
 		GER_modular_construction
 		GER_foreign_recruitment
 		GER_appoint_albert_speer
