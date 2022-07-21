@@ -153,7 +153,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = GER_invest_in_ig_farben_schact
-		cost = 10
+		cost = 3
 		
 		available = {
 			has_full_control_of_state = 56
@@ -972,7 +972,7 @@ focus_tree = {
 	focus = {
 		id = GER_realization_of_the_wehrmacht
 		icon = GFX_focus_generic_military_mission
-		x = 28
+		x = 30
 		y = 1
 		cost = 3
 		ai_will_do = {
@@ -993,7 +993,7 @@ focus_tree = {
 		id = GER_the_luftwaffe
 		icon = GFX_goal_construct_naval_dockyard
 		prerequisite = { focus = GER_realization_of_the_wehrmacht }
-		x = -10
+		x = -9
 		y = 1
 		relative_position_id = GER_realization_of_the_wehrmacht
 
@@ -1003,6 +1003,704 @@ focus_tree = {
 		}
 
 		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = GER_the_great_sky_war
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = GER_the_luftwaffe }
+		x = -3
+		y = 1
+		relative_position_id = GER_the_luftwaffe
+		cost = 3
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = GER_the_great_sky_war
+				cost_reduction = 0.99
+				uses = 4
+				category = air_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = GER_long_range_escorts
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = { focus = GER_the_great_sky_war }
+		x = 0
+		y = 2
+		relative_position_id = GER_the_great_sky_war
+		cost = 3
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = GER_long_range_escorts
+				bonus = 0.5
+				uses = 2
+				category = cat_heavy_fighter
+			}
+		}
+	}
+
+	###
+
+	focus = {
+		id = GER_bases_on_two_fronts
+		icon = GFX_goal_airbases
+		prerequisite = { focus = GER_the_luftwaffe }
+		x = 0
+		y = 1
+		relative_position_id = GER_the_luftwaffe
+		cost = 4
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		available = {
+			controls_state = 5
+			controls_state = 63
+			controls_state = 51
+			controls_state = 801
+			controls_state = 56
+		}
+
+		completion_reward = {
+			5 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 5
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 6
+						instant_build = yes
+					}
+					set_state_flag = GER_air_innovation_6air
+				}
+			}
+			63 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					set_state_flag = GER_air_innovation_6air
+				}
+			}
+			51 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					set_state_flag = GER_air_innovation_2air
+				}
+			}
+			801 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					set_state_flag = GER_air_innovation_2air
+				}
+			}
+			56 = {
+				if = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					set_state_flag = GER_air_innovation_2air
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_fallschirmjager
+		icon = GFX_focus_generic_paratrooper
+		prerequisite = { focus = GER_bases_on_two_fronts }
+		x = 0
+		y = 1
+		relative_position_id = GER_bases_on_two_fronts
+		cost = 3
+		ai_will_do = {
+			factor = 0.25
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = paratrooper_bonus
+				bonus = 0.5
+				uses = 3
+				category = para_tech
+			}
+			add_equipment_to_stockpile = {
+				type = ger_transport_plane_equipment_1
+				amount = 50
+			}
+			custom_effect_tooltip = GER_create_unit_fallschirmjager_tt
+			hidden_effect = {
+				division_template = {
+					name = "Fallschirmjäger Brigade"
+					template_counter = 148
+					priority = 1
+
+					regiments = {
+						paratrooper = { x = 0 y = 0 }
+						paratrooper = { x = 0 y = 1 }
+						paratrooper = { x = 0 y = 2 }
+
+						paratrooper = { x = 1 y = 0 }
+						paratrooper = { x = 1 y = 1 }
+						paratrooper = { x = 1 y = 2 }
+
+						paratrooper = { x = 2 y = 0 }
+						paratrooper = { x = 2 y = 1 }
+						paratrooper = { x = 2 y = 2 }
+
+						paratrooper = { x = 3 y = 0 }
+						paratrooper = { x = 3 y = 1 }
+						paratrooper = { x = 3 y = 2 }
+					}
+
+					support = {
+						engineer = { x = 0 y = 0 }
+						recon = { x = 0 y = 1 }
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_invest_in_GEMA
+		icon = GFX_goal_generic_radar
+		prerequisite = { focus = GER_bases_on_two_fronts }
+		x = -1
+		y = 2
+		relative_position_id = GER_bases_on_two_fronts
+		cost = 3
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = GER_invest_in_GEMA
+				bonus = 0.5
+				uses = 1
+				category = computing_tech
+			}
+			add_tech_bonus = {
+				name = GER_invest_in_GEMA
+				bonus = 0.5
+				uses = 2
+				category = radar_tech
+			}
+		}
+	}
+
+	focus = {
+		id = GER_aeronautic_funding
+		icon = GFX_goal_generic_air_production
+		prerequisite = { focus = GER_bases_on_two_fronts }
+		x = 1
+		y = 2
+		relative_position_id = GER_bases_on_two_fronts
+		cost = 4
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = GER_aeronautic_funding
+		}
+	}
+
+	focus = {
+		id = GER_continue_the_bf
+		icon = GFX_goal_messerschmitt
+		prerequisite = { focus = GER_invest_in_GEMA focus = GER_aeronautic_funding }
+		x = 0
+		y = 1
+		relative_position_id = GER_invest_in_GEMA
+		cost = 3
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 50
+
+			add_tech_bonus = {
+				name = radar_tech_bonus
+				bonus = 0.5
+				uses = 1
+				category = radar_tech
+			}
+			add_tech_bonus = {
+				name = ger_fw_bonus_1
+				bonus = 0.5
+				uses = 1
+				technology = ger_fighter_4
+			}
+			add_tech_bonus = {
+				name = ger_fw_bonus_1
+				bonus = 0.5
+				uses = 1
+				technology = ger_fighter_5
+			}
+			add_tech_bonus = {
+				name = ger_fw_bonus_1
+				bonus = 0.5
+				uses = 1
+				technology = ger_fighter_6
+			}
+			# if = {
+			# 	limit = {
+			# 		has_opinion_modifier = sov_ger_treaty
+			# 		NOT = { has_war_with = SOV }
+			# 	}
+			# 	SOV = {
+			# 		country_event = { id = germany.78 days = 1 }
+			# 	}
+			# }
+		}
+	}
+
+	focus = {
+		id = GER_develop_the_fw
+		icon = GFX_goal_focker_wulf
+		prerequisite = { focus = GER_invest_in_GEMA focus = GER_aeronautic_funding }
+		x = 0
+		y = 1
+		relative_position_id = GER_aeronautic_funding
+		cost = 3
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 50
+
+			add_tech_bonus = {
+				name = radar_tech_bonus
+				bonus = 0.5
+				uses = 1
+				category = radar_tech
+			}
+			add_tech_bonus = {
+				name = ger_fw_bonus_1
+				bonus = 0.5
+				uses = 1
+				technology = ger_fighter_multirole_1
+			}
+			add_tech_bonus = {
+				name = ger_fw_bonus_1
+				bonus = 0.5
+				uses = 1
+				technology = ger_fighter_multirole_2
+			}
+			add_tech_bonus = {
+				name = ger_fw_bonus_1
+				bonus = 0.5
+				uses = 1
+				technology = ger_fighter_multirole_3
+			}
+			# if = {
+			# 	limit = {
+			# 		has_opinion_modifier = sov_ger_treaty
+			# 		NOT = { has_war_with = SOV }
+			# 	}
+			# 	SOV = {
+			# 		country_event = { id = germany.78 days = 1 }
+			# 	}
+			# }
+		}
+	}
+
+	###
+
+	focus = {
+		id = GER_recruit_the_erprobungskommando
+		icon = GFX_goal_generic_air_production
+		prerequisite = { focus = GER_continue_the_bf }
+		prerequisite = { focus = GER_develop_the_fw }
+		x = -1
+		y = 1
+		relative_position_id = GER_continue_the_bf
+		cost = 4
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = GER_rocketry_focus
+		icon = GFX_goal_tfv_generic_tech_sharing
+		prerequisite = { focus = GER_continue_the_bf }
+		prerequisite = { focus = GER_develop_the_fw }
+		x = 1
+		y = 1
+		relative_position_id = GER_continue_the_bf
+		cost = 3
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_ideas = GER_rocketry_idea
+			add_tech_bonus = {
+				name = GER_rocketry_focus
+				bonus = 0.5
+				uses = 1
+				category = rocketry
+			}
+			add_tech_bonus = {
+				name = GER_rocketry_focus
+				bonus = 0.5
+				uses = 2
+				category = jet_technology
+			}
+		}
+	}
+
+	focus = {
+		id = GER_reform_the_reichsluftfahrtministerium
+		icon = GFX_goal_generic_air_production
+		prerequisite = { focus = GER_continue_the_bf }
+		prerequisite = { focus = GER_develop_the_fw }
+		x = 3
+		y = 1
+		relative_position_id = GER_continue_the_bf
+		cost = 4
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+		}
+	}
+
+	###
+
+	focus = {
+		id = GER_bomber_evolution
+		icon = GFX_goal_construct_naval_dockyard
+		prerequisite = { focus = GER_the_luftwaffe }
+		x = 3
+		y = 1
+		relative_position_id = GER_the_luftwaffe
+
+		cost = 3
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = bomber_bonus
+				bonus = 0.5
+				uses = 2
+				category = tactical_bomber
+			}
+			add_tech_bonus = {
+				name = bomber_bonus
+				bonus = 0.5
+				uses = 2
+				category = patrol_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = GER_sturzbomber_programm
+		icon = GFX_goal_Stuka
+		prerequisite = { focus = GER_bomber_evolution }
+		x = 0
+		y = 2
+		relative_position_id = GER_bomber_evolution
+		cost = 3
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = GER_sturzbomber_programm
+				bonus = 0.5
+				uses = 2
+				category = cas_bomber
+			}
+			add_tech_bonus = {
+				name = GER_sturzbomber_programm
+				bonus = 0.5
+				uses = 1
+				technology = ger_strike_bomber_1
+			}
+			add_doctrine_cost_reduction = {
+				name = GER_sturzbomber_programm
+				cost_reduction = 0.99
+				uses = 3
+				category = cat_battlefield_support
+			}
+		}
+	}
+
+	###
+
+	focus = {
+		id = GER_horton_project
+		icon = GFX_goal_tfv_generic_tech_sharing
+		prerequisite = { focus = GER_rocketry_focus }
+		prerequisite = { focus = GER_long_range_escorts }
+		x = -3
+		y = 1
+		relative_position_id = GER_rocketry_focus
+		cost = 3
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = GER_schwalbe_project
+		icon = GFX_goal_tfv_generic_tech_sharing
+		prerequisite = { focus = GER_rocketry_focus }
+		x = -1
+		y = 1
+		relative_position_id = GER_rocketry_focus
+		cost = 3
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = GER_v_bomb_project
+		icon = GFX_goal_tfv_generic_tech_sharing
+		prerequisite = { focus = GER_rocketry_focus }
+		x = 1
+		y = 1
+		relative_position_id = GER_rocketry_focus
+		cost = 3
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = GER_v_bomb_project_focus
+				bonus = 0.5
+				uses = 1
+				category = rocketry
+			}
+			if = {
+				limit = {
+					OR = {
+						GER = { has_full_control_of_state = 7 }
+						RHO = { has_full_control_of_state = 7 }
+					}
+					7 = {
+						free_building_slots = {
+							building = rocket_site
+							size > 0
+							include_locked = yes
+						}
+					}
+				}
+				7 = {
+					add_building_construction = {
+						type = rocket_site
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						GER = { has_full_control_of_state = 36 }
+						RHO = { has_full_control_of_state = 36 }
+					}
+					36 = {
+						free_building_slots = {
+							building = rocket_site
+							size > 0
+							include_locked = yes
+						}
+					}
+				}
+				36 = {
+					add_building_construction = {
+						type = rocket_site
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					GER = { has_full_control_of_state = 56 }
+					56 = {
+						free_building_slots = {
+							building = rocket_site
+							size > 0
+							include_locked = yes
+						}
+					}
+				}
+				56 = {
+					add_building_construction = {
+						type = rocket_site
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					GER = { has_full_control_of_state = 59 }
+					59 = {
+						free_building_slots = {
+							building = rocket_site
+							size > 0
+							include_locked = yes
+						}
+					}
+				}
+				59 = {
+					add_building_construction = {
+						type = rocket_site
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					GER = { has_full_control_of_state = 64 }
+					64 = {
+						free_building_slots = {
+							building = rocket_site
+							size > 0
+							include_locked = yes
+						}
+					}
+				}
+				64 = {
+					add_building_construction = {
+						type = rocket_site
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = GER_long_range_bombers
+		icon = GFX_goal_tfv_generic_tech_sharing
+		prerequisite = { focus = GER_rocketry_focus }
+		prerequisite = { focus = GER_sturzbomber_programm }
+		x = 3
+		y = 1
+		relative_position_id = GER_rocketry_focus
+		cost = 3
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = no
 
 		completion_reward = {
 		}
@@ -1624,7 +2322,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = GER_refinement_of_bewegungskrieg
-		cost = 10
+		cost = 3
 		ai_will_do = {
 			factor = 1
 		}
@@ -1672,7 +2370,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = GER_refinement_of_bewegungskrieg
-		cost = 10
+		cost = 3
 		ai_will_do = {
 			factor = 1
 		}
@@ -1750,7 +2448,7 @@ focus_tree = {
 		id = GER_the_kriegsmarine
 		icon = GFX_goal_construct_naval_dockyard
 		prerequisite = { focus = GER_realization_of_the_wehrmacht }
-		x = 10
+		x = 9
 		y = 1
 		relative_position_id = GER_realization_of_the_wehrmacht
 
@@ -1999,7 +2697,7 @@ focus_tree = {
 		icon = GFX_goal_construct_naval_large_dockyard
 		prerequisite = { focus = GER_naval_rearmament }
 		x = 0
-		y = 2
+		y = 1
 		relative_position_id = GER_naval_rearmament
 		cost = 8
 		ai_will_do = {
@@ -2200,7 +2898,7 @@ focus_tree = {
         id = GER_order_bismarck
         icon = GFX_goal_generic_amphibious_assault
         prerequisite = { focus = GER_the_kriegsmarine }
-        x = 3
+        x = 2
         y = 1
         relative_position_id = GER_the_kriegsmarine
         cost = 3
@@ -2217,10 +2915,10 @@ focus_tree = {
     focus = {
         id = GER_burn_the_naval_treaty
         icon = GFX_goal_generic_amphibious_assault
-        prerequisite = { focus = GER_order_bismarck }
-        x = 0
+        prerequisite = { focus = GER_the_kriegsmarine }
+        x = 4
         y = 1
-        relative_position_id = GER_order_bismarck
+        relative_position_id = GER_the_kriegsmarine
         cost = 3
         ai_will_do = {
             factor = 1
@@ -2235,10 +2933,11 @@ focus_tree = {
 	focus = {
 		id = GER_plan_z
 		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = GER_order_bismarck }
 		prerequisite = { focus = GER_burn_the_naval_treaty }
-		x = 0
+		x = 1
 		y = 1
-		relative_position_id = GER_burn_the_naval_treaty
+		relative_position_id = GER_order_bismarck
 		cost = 3
 		ai_will_do = {
 			factor = 0.25
@@ -2422,7 +3121,7 @@ focus_tree = {
         id = GER_naval_coop_with_japan
         icon = GFX_goal_generic_amphibious_assault
         prerequisite = { focus = GER_the_kriegsmarine }
-        x = 5
+        x = 6
         y = 1
         relative_position_id = GER_the_kriegsmarine
         cost = 3
@@ -2459,8 +3158,8 @@ focus_tree = {
         icon = GFX_goal_generic_amphibious_assault
         prerequisite = { focus = GER_plan_z }
         prerequisite = { focus = GER_order_graf_zepplin }
-        x = 1
-        y = 2
+        x = 0
+        y = 1
         relative_position_id = GER_order_graf_zepplin
         cost = 3
         ai_will_do = {
@@ -2499,7 +3198,7 @@ focus_tree = {
 		id = GER_rhineland
 		icon = GFX_goal_ger_rhineland
 		mutually_exclusive = { focus = GER_oppose_hitler }
-		x = 55
+		x = 58
 		y = 1
 		cost = 5
 		available = {
@@ -2935,7 +3634,7 @@ focus_tree = {
 		y = 1
 
 		relative_position_id = GER_foreign_training_staff
-		cost = 10
+		cost = 3
 		ai_will_do = {
 			factor = 10
 		}	
@@ -3043,7 +3742,7 @@ focus_tree = {
 		y = 1
 
 		relative_position_id = GER_observations_from_spain
-		cost = 10
+		cost = 3
 		ai_will_do = {
 			factor = 10
 		}	
@@ -3151,7 +3850,7 @@ focus_tree = {
 		y = 1
 
 		relative_position_id = GER_observations_from_spain
-		cost = 10
+		cost = 3
 		ai_will_do = {
 			factor = 10
 		}	

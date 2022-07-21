@@ -84,7 +84,7 @@ German_alternate_kaiser = {
 		GER_assassinate_mussolini
 		GER_passenger_planes
 		GER_sturzbomber_programm
-		GER_air_bf
+		GER_continue_the_bf
 		GER_rocketry_focus
 		GER_anti_comintern_pact_unaligned
 		GER_anti_soviet_pact_unaligned
@@ -198,7 +198,7 @@ German_alternate_democratic = {
 		GER_invest_in_ig_farben_schact
 		GER_coal_liquidization_schact
 		GER_strike_at_the_source
-		GER_air_fw
+		GER_develop_the_fw
 		GER_rocketry_focus
 		GER_wunderwaffe
 		GER_the_mannheim_project
