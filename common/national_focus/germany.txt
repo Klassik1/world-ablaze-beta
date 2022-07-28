@@ -86,6 +86,7 @@ focus_tree = {
 			}
 		}
 	}
+
 	############### AUTARKY ################
 
 	focus = {
@@ -121,6 +122,24 @@ focus_tree = {
 			reverse_add_opinion_modifier = { target = MAN modifier = autarky_measures }
 			reverse_add_opinion_modifier = { target = MEX modifier = autarky_measures }
 			reverse_add_opinion_modifier = { target = FRA modifier = autarky_measures }
+		}
+	}
+	focus = {
+		id = GER_Peenemunde_Army_Research_Centre
+		icon = GFX_focus_research
+		prerequisite = { focus = GER_continue_autarky }
+		x = 0
+		y = 1
+		relative_position_id = GER_continue_autarky
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_research_slot = 1
 		}
 	}
 	focus = {
@@ -2030,9 +2049,9 @@ focus_tree = {
 		icon = GFX_focus_generic_combined_arms
 		prerequisite = { focus = GER_order_the_sonderkraftahrzeug }
 		prerequisite = { focus = GER_plan_the_first_generation }
-		x = 0
-		y = 4
-		relative_position_id = GER_oberkommando_des_heeres
+		x = -2
+		y = 1
+		relative_position_id = GER_plan_the_first_generation
 		cost = 3
 		ai_will_do = {
 			factor = 1
@@ -2065,10 +2084,11 @@ focus_tree = {
 	focus = {
 		id = GER_blomberg_fritsch_affair
 		icon = GFX_focus_generic_combined_arms
-		prerequisite = { focus = GER_establish_combined_arms }
-		x = 0
+		prerequisite = { focus = GER_order_the_sonderkraftahrzeug }
+		prerequisite = { focus = GER_plan_the_first_generation }
+		x = 2
 		y = 1
-		relative_position_id = GER_establish_combined_arms
+		relative_position_id = GER_order_the_sonderkraftahrzeug
 		cost = 3
 		ai_will_do = {
 			factor = 1
@@ -2102,7 +2122,8 @@ focus_tree = {
 		id = GER_formation_of_the_okw
 		icon = GFX_focus_generic_combined_arms
 		prerequisite = { focus = GER_blomberg_fritsch_affair }
-		x = 0
+		prerequisite = { focus = GER_establish_combined_arms }
+		x = 1
 		y = 1
 		relative_position_id = GER_blomberg_fritsch_affair
 		cost = 3
@@ -2119,10 +2140,10 @@ focus_tree = {
 	focus = {
 		id = GER_plan_the_second_generation
 		icon = GFX_goal_generic_army_motorized
-		prerequisite = { focus = GER_establish_combined_arms }
+		prerequisite = { focus = GER_formation_of_the_okw }
 		x = 3
 		y = 1
-		relative_position_id = GER_establish_combined_arms
+		relative_position_id = GER_formation_of_the_okw
 		cost = 4
 		ai_will_do = {
 			factor = 1
@@ -2274,10 +2295,10 @@ focus_tree = {
 	focus = {
 		id = GER_refinement_of_bewegungskrieg
 		icon = GFX_goal_bewegungskrieg
-		prerequisite = { focus = GER_establish_combined_arms }
+		prerequisite = { focus = GER_formation_of_the_okw }
 		x = -3
 		y = 1
-		relative_position_id = GER_establish_combined_arms
+		relative_position_id = GER_formation_of_the_okw
 		cost = 3
 		ai_will_do = {
 			factor = 1
@@ -2448,7 +2469,7 @@ focus_tree = {
 		id = GER_the_kriegsmarine
 		icon = GFX_goal_construct_naval_dockyard
 		prerequisite = { focus = GER_realization_of_the_wehrmacht }
-		x = 9
+		x = 15
 		y = 1
 		relative_position_id = GER_realization_of_the_wehrmacht
 
@@ -2467,7 +2488,7 @@ focus_tree = {
 		id = GER_naval_rearmament
 		icon = GFX_goal_construct_naval_dockyard
 		prerequisite = { focus = GER_the_kriegsmarine }
-		x = 0
+		x = -2
 		y = 1
 		relative_position_id = GER_the_kriegsmarine
 		cost = 3
@@ -2495,7 +2516,7 @@ focus_tree = {
 		id = GER_u_boat_effort
 		icon = GFX_goal_generic_navy_submarine
 		prerequisite = { focus = GER_the_kriegsmarine }
-		x = -3
+		x = -6
 		y = 1
 		relative_position_id = GER_the_kriegsmarine
 		cost = 3
@@ -3198,7 +3219,7 @@ focus_tree = {
 		id = GER_rhineland
 		icon = GFX_goal_ger_rhineland
 		mutually_exclusive = { focus = GER_oppose_hitler }
-		x = 58
+		x = 65
 		y = 1
 		cost = 5
 		available = {
