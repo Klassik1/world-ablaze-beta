@@ -7,7 +7,7 @@ state={
 
 	manpower = 1335010
 	resources={
-		oil=124 # was: 41
+		oil=119 # was: 41
 	}
 
 	history={
