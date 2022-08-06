@@ -3571,7 +3571,7 @@ prospect_for_resources = {
 			181 = {
 				add_resource = {
 					type = tungsten
-					amount = 170
+					amount = 180
 				}
 			}
 		}
